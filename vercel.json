@@ -3,7 +3,8 @@
   "buildCommand": "cd synthese && npm install && NODE_OPTIONS=--no-deprecation npm run build",
   "outputDirectory": "synthese/build",
   "env": {
-    "CI": "false"
+    "CI": "false",
+    "NODE_VERSION": "18"
   },
   "rewrites": [
     {
