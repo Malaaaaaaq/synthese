@@ -35,3 +35,5 @@ app.listen(PORT, () => {
   console.log(`   /api/ports | /api/escales | /api/factures`);
   console.log(`   /api/tarifs | /api/marchandises`);
 });
+
+module.exports = app;

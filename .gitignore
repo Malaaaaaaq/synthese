@@ -1,0 +1,9 @@
+# Dependencies
+node_modules/
+dist/
+build/
+.env*
+*.log
+.DS_Store
+yarn-error.log*
+npm-debug.log*
