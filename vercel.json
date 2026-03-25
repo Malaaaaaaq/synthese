@@ -22,13 +22,11 @@
       "dest": "backend/server.js"
     },
     {
-      "src": "/(.*)",
-      "dest": "/synthese/$1",
-      "check": true
+      "handle": "filesystem"
     },
     {
       "src": "/(.*)",
-      "dest": "/synthese/index.html"
+      "dest": "/index.html"
     }
   ]
 }

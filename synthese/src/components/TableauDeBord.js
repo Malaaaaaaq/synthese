@@ -200,7 +200,7 @@ export default function TableauDeBord() {
     try {
       const [r1, r2] = await Promise.all([
         fetch("/api/manifeste/all", { headers: { Authorization: `Bearer ${getToken()}` } }),
-        fetch("http://localhost:5000/api/factures",      { headers: { Authorization: `Bearer ${getToken()}` } }),
+        fetch("/api/factures", { headers: { Authorization: `Bearer ${getToken()}` } }),
       ]);
       setManifestes(Array.isArray(await r1.json()) ? await r1.json() : []);
       setFactures(Array.isArray(await r2.json())   ? await r2.json() : []);
