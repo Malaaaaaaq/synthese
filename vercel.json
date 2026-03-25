@@ -1,5 +1,8 @@
 {
   "version": 2,
+  "env": {
+    "CI": "false"
+  },
   "builds": [
     {
       "src": "backend/server.js",
@@ -10,9 +13,6 @@
       "use": "@vercel/static-build",
       "config": {
         "distDir": "build"
-      },
-      "env": {
-        "CI": "false"
       }
     }
   ],
