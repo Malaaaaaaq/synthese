@@ -1,0 +1,116 @@
+/* ================================================================
+   LogoutButton.css — Bouton déconnexion réutilisable
+================================================================ */
+
+/* ── BOUTON PRINCIPAL ─────────────────────────────────────── */
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: all 0.25s;
+  white-space: nowrap;
+}
+
+/* Variante sur fond sombre (header bleu marine) */
+.logout-btn.default {
+  background: rgba(239,68,68,0.12);
+  border: 1px solid rgba(239,68,68,0.3);
+  color: #fca5a5;
+}
+
+.logout-btn.default:hover {
+  background: rgba(239,68,68,0.25);
+  border-color: rgba(239,68,68,0.5);
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* Variante sur fond blanc (si besoin) */
+.logout-btn.light {
+  background: #fef2f2;
+  border: 1.5px solid #fca5a5;
+  color: #ef4444;
+}
+
+.logout-btn.light:hover {
+  background: #fee2e2;
+  border-color: #ef4444;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(239,68,68,0.2);
+}
+
+/* ── CONFIRMATION ─────────────────────────────────────────── */
+.logout-confirm {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.logout-confirm span {
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  white-space: nowrap;
+}
+
+.logout-confirm.default span { color: rgba(255,255,255,0.7); }
+.logout-confirm.light  span { color: #475569; }
+
+.logout-yes {
+  padding: 6px 14px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  background: #ef4444;
+  color: white;
+  box-shadow: 0 3px 8px rgba(239,68,68,0.3);
+}
+
+.logout-yes:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}
+
+.logout-no {
+  padding: 6px 14px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.logout-confirm.default .logout-no {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.7);
+}
+
+.logout-confirm.default .logout-no:hover {
+  background: rgba(255,255,255,0.18);
+  color: white;
+}
+
+.logout-confirm.light .logout-no {
+  background: white;
+  border: 1.5px solid #e2e8f0;
+  color: #475569;
+}
+
+.logout-confirm.light .logout-no:hover {
+  background: #f1f5f9;
+}

@@ -1,0 +1,385 @@
+/* ================================================================
+   ConsultationFactures.css — Design cohérent avec Facturation.css
+   Police : Poppins
+================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ================================================================
+   CANVAS ANIMATION
+================================================================ */
+.cf-canvas {
+  position: fixed; inset: 0; width: 100%; height: 100%;
+  z-index: 0; pointer-events: none; display: block;
+}
+
+/* ================================================================
+   LAYOUT
+================================================================ */
+.cf-container {
+  font-family: 'Poppins', sans-serif;
+  background: #f4f6fb;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ================================================================
+   TOP BAR
+================================================================ */
+.cf-header {
+  background: linear-gradient(90deg, #152c54 0%, #1e3a6e 60%, #2a4f8f 100%);
+  padding: 0 40px;
+  height: 68px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(21,44,84,0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.cf-header-left { display: flex; align-items: center; gap: 14px; }
+
+.cf-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  border: 2px solid rgba(255,255,255,0.35);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 700; color: white;
+  flex-shrink: 0; position: relative;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+.cf-avatar::after {
+  content: '';
+  position: absolute; bottom: 1px; right: 1px;
+  width: 11px; height: 11px;
+  background: #10b981; border-radius: 50%;
+  border: 2px solid #1e3a6e;
+  box-shadow: 0 0 6px rgba(16,185,129,0.5);
+}
+
+.cf-agent-info { color: white; }
+.cf-agent-name  { font-size: 14px; font-weight: 700; color: white; line-height: 1.2; }
+.cf-agent-role  { font-size: 11px; color: rgba(255,255,255,0.55); font-weight: 400; }
+
+.cf-header-right { display: flex; align-items: center; gap: 12px; }
+
+.cf-btn-nav {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: white; padding: 9px 18px; border-radius: 9px;
+  font-size: 12px; font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer; transition: all 0.25s;
+  display: flex; align-items: center; gap: 8px;
+  backdrop-filter: blur(6px); letter-spacing: 0.2px;
+}
+.cf-btn-nav:hover {
+  background: rgba(255,255,255,0.22);
+  border-color: rgba(255,255,255,0.45);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+
+.cf-btn-refresh {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.8);
+  width: 38px; height: 38px; border-radius: 9px;
+  font-size: 13px; font-family: 'Poppins', sans-serif;
+  cursor: pointer; transition: all 0.2s;
+  display: flex; align-items: center; justify-content: center;
+}
+.cf-btn-refresh:hover { background: rgba(255,255,255,0.15); color: white; }
+
+.cf-logo { display: flex; align-items: center; gap: 10px; }
+.cf-logo-icon {
+  width: 40px; height: 40px; background: white; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 800; color: #1e3a6e;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2); flex-shrink: 0;
+}
+.cf-logo-text { font-size: 17px; font-weight: 700; color: white; line-height: 1; }
+.cf-logo-text span { font-size: 10px; color: rgba(255,255,255,0.5); font-weight: 400; display: block; margin-top: 2px; }
+
+/* ================================================================
+   SOUS-HEADER
+================================================================ */
+.cf-subheader {
+  background: white; padding: 18px 40px;
+  border-bottom: 2px solid #dde3ef;
+  box-shadow: 0 1px 6px rgba(21,44,84,0.05);
+  position: relative; z-index: 1;
+}
+.cf-subheader h1 {
+  font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 700;
+  color: #1e3a6e; display: flex; align-items: center; gap: 10px; margin: 0;
+}
+.cf-subheader h1 svg { color: #1a56db; font-size: 17px; }
+.cf-subtitle { font-size: 12px; color: #5a6a8a; margin-top: 3px; }
+
+/* ================================================================
+   CONTENU
+================================================================ */
+.cf-content { padding: 28px 40px; flex: 1; position: relative; z-index: 1; }
+
+/* ================================================================
+   CARTE FILTRE
+================================================================ */
+.cf-filter-card {
+  background: white; border-radius: 14px;
+  border: 1px solid #dde3ef; padding: 22px 28px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 16px rgba(21,44,84,0.08);
+}
+.cf-filter-title {
+  display: flex; align-items: center; gap: 8px;
+  font-weight: 700; font-size: 14px; color: #1e3a6e;
+  margin-bottom: 18px;
+}
+.cf-filter-title svg { color: #1a56db; font-size: 13px; }
+
+.cf-filter-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+
+.cf-date-group { display: flex; align-items: center; gap: 10px; }
+
+.cf-date-label {
+  display: flex; align-items: center; gap: 7px;
+  background: #f0f4fb; border-radius: 8px;
+  padding: 8px 14px; border: 1px solid #dde3ef;
+  font-weight: 700; font-size: 13px; color: #1e3a6e;
+  white-space: nowrap;
+}
+.cf-date-label svg { color: #1a56db; font-size: 12px; }
+
+.cf-date-input {
+  padding: 10px 14px; border: 1.5px solid #dde3ef; border-radius: 9px;
+  font-size: 13px; font-family: 'Poppins', sans-serif;
+  color: #1a2a4a; background: white; transition: all 0.2s; outline: none;
+}
+.cf-date-input:focus {
+  border-color: #1a56db;
+  box-shadow: 0 0 0 3px rgba(26,86,219,0.1);
+}
+
+.cf-btn-valider {
+  background: linear-gradient(135deg, #152c54, #1e3a6e);
+  color: white; border: none; padding: 10px 24px;
+  border-radius: 9px; font-size: 13px; font-weight: 700;
+  font-family: 'Poppins', sans-serif; cursor: pointer;
+  transition: all 0.2s; display: flex; align-items: center; gap: 8px;
+  box-shadow: 0 4px 14px rgba(21,44,84,0.3);
+}
+.cf-btn-valider:hover {
+  background: linear-gradient(135deg, #1e3a6e, #2a4f8f);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(21,44,84,0.4);
+}
+
+.cf-btn-reset {
+  background: white; color: #5a6a8a;
+  border: 1.5px solid #dde3ef; padding: 10px 18px;
+  border-radius: 9px; font-size: 13px; font-weight: 600;
+  font-family: 'Poppins', sans-serif; cursor: pointer;
+  transition: all 0.2s; display: flex; align-items: center; gap: 7px;
+}
+.cf-btn-reset:hover { border-color: #ef4444; color: #ef4444; background: #fef2f2; }
+
+.cf-alert-error {
+  margin-top: 14px; background: #fef2f2;
+  border: 1px solid #fca5a5; border-left: 4px solid #ef4444;
+  color: #991b1b; padding: 10px 16px; border-radius: 8px;
+  font-size: 13px; font-weight: 600;
+}
+
+.cf-periode-info { display: flex; align-items: center; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+.cf-badge-periode {
+  background: #eff6ff; border: 1px solid #bfdbfe; color: #1a56db;
+  padding: 6px 14px; border-radius: 20px;
+  font-size: 12px; font-weight: 600;
+  display: flex; align-items: center; gap: 6px;
+}
+.cf-badge-result {
+  background: #ecfdf5; border: 1px solid #6ee7b7; color: #065f46;
+  padding: 6px 14px; border-radius: 20px;
+  font-size: 12px; font-weight: 600;
+  display: flex; align-items: center; gap: 6px;
+}
+
+/* ================================================================
+   STATS MINI
+================================================================ */
+.cf-stats-row { display: flex; gap: 16px; margin-bottom: 22px; flex-wrap: wrap; }
+.cf-stat-card {
+  background: white; border-radius: 12px; padding: 16px 22px;
+  border: 1px solid #dde3ef; border-top: 3px solid transparent;
+  box-shadow: 0 2px 16px rgba(21,44,84,0.08);
+  flex: 1; min-width: 160px; transition: all 0.25s;
+}
+.cf-stat-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(21,44,84,0.12); }
+.cf-stat-label { font-size: 11px; color: #5a6a8a; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+.cf-stat-num { font-size: 26px; font-weight: 800; color: #1a2a4a; letter-spacing: -1px; line-height: 1; }
+
+/* ================================================================
+   TABLEAU
+================================================================ */
+.cf-table-wrapper {
+  background: white; border-radius: 14px;
+  border: 1px solid #dde3ef; overflow: hidden;
+  box-shadow: 0 2px 16px rgba(21,44,84,0.08);
+}
+.cf-table-title {
+  padding: 16px 22px; border-bottom: 2px solid #f0f4fb;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.cf-table-title h3 {
+  font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 700;
+  color: #1e3a6e; display: flex; align-items: center; gap: 8px; margin: 0;
+}
+.cf-table-title h3 svg { color: #1a56db; }
+.cf-table-count {
+  font-size: 12px; color: #1e3a6e; background: #eef2ff;
+  padding: 3px 12px; border-radius: 20px; font-weight: 600;
+}
+.cf-table-scroll { overflow-x: auto; }
+
+.cf-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.cf-table thead {
+  background: linear-gradient(90deg, #152c54 0%, #1e3a6e 100%);
+}
+.cf-table th {
+  padding: 14px 16px; text-align: left;
+  font-family: 'Poppins', sans-serif; font-size: 10.5px;
+  font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; color: rgba(255,255,255,0.7); white-space: nowrap;
+}
+.th-right { text-align: right !important; }
+
+.cf-table td {
+  padding: 13px 16px; border-bottom: 1px solid #f4f7fb;
+  color: #1a2a4a; vertical-align: middle;
+}
+.cf-table tbody tr:last-child td { border-bottom: none; }
+.cf-table tbody tr:hover td { background: #f5f8ff; }
+
+.cf-table tfoot tr {
+  background: linear-gradient(90deg, #152c54, #1e3a6e);
+}
+.cf-tfoot-label {
+  text-align: right; color: rgba(255,255,255,0.8) !important;
+  font-weight: 700; font-size: 13px; border: none !important;
+  padding: 14px 16px; font-family: 'Poppins', sans-serif;
+}
+.cf-tfoot-val {
+  text-align: right; font-family: monospace; font-weight: 800;
+  font-size: 14px; color: white !important; border: none !important; padding: 14px 16px;
+}
+.cf-tfoot-tr {
+  text-align: right; font-family: monospace; font-weight: 800;
+  font-size: 14px; color: #d8b4fe !important; border: none !important; padding: 14px 16px;
+}
+
+/* Badges tableau */
+.cf-badge-num {
+  font-family: monospace; font-size: 11px; font-weight: 700;
+  background: #eef2ff; color: #1e3a6e;
+  padding: 4px 9px; border-radius: 6px;
+  border: 1px solid #c7d2f0; letter-spacing: 1px;
+}
+.cf-badge-escale {
+  background: #eff6ff; color: #1a56db; border: 1px solid #bfdbfe;
+  padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600;
+  display: inline-flex; align-items: center; gap: 5px;
+}
+.cf-badge-navire {
+  background: #f0fdf4; color: #065f46; border: 1px solid #6ee7b7;
+  padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600;
+  display: inline-flex; align-items: center; gap: 5px;
+}
+.cf-client-cell { display: flex; align-items: center; gap: 8px; }
+.cf-client-avatar {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: linear-gradient(135deg, #1e3a6e, #1a56db);
+  color: white; display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; flex-shrink: 0;
+}
+.cf-td-date { color: #5a6a8a; font-size: 13px; }
+.cf-td-num  { text-align: right; font-family: monospace; font-weight: 700; color: #152c54; }
+.cf-td-tr   { text-align: right; font-family: monospace; font-weight: 600; color: #7c3aed; }
+
+/* ================================================================
+   LOADING / EMPTY
+================================================================ */
+.cf-loading {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; padding: 80px; color: #5a6a8a; font-size: 14px;
+}
+.cf-spinner {
+  display: inline-block; width: 20px; height: 20px;
+  border: 3px solid #dde3ef; border-top-color: #1e3a6e;
+  border-radius: 50%; animation: cf-spin 0.7s linear infinite;
+}
+@keyframes cf-spin { to { transform: rotate(360deg); } }
+
+.cf-empty {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; padding: 80px; color: #8a9ab8; gap: 8px;
+}
+.cf-empty-icon { font-size: 52px; opacity: 0.35; margin-bottom: 8px; }
+.cf-empty p    { font-size: 15px; font-weight: 600; color: #5a6a8a; }
+.cf-empty span { font-size: 12px; color: #8a9ab8; }
+
+/* ================================================================
+   BOUTON EXPORT EXCEL
+================================================================ */
+.cf-export-bar {
+  padding: 16px 22px;
+  border-top: 2px solid #f0f4fb;
+  display: flex;
+  justify-content: flex-end;
+  background: #fafbff;
+  border-radius: 0 0 14px 14px;
+}
+
+.cf-btn-excel {
+  background: linear-gradient(135deg, #166534, #15803d);
+  color: white; border: none;
+  padding: 11px 24px; border-radius: 10px;
+  font-size: 13px; font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer; transition: all 0.2s;
+  display: flex; align-items: center; gap: 10px;
+  box-shadow: 0 4px 14px rgba(22,101,52,0.35);
+}
+.cf-btn-excel:hover {
+  background: linear-gradient(135deg, #14532d, #166534);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(22,101,52,0.45);
+}
+.cf-btn-excel:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(22,101,52,0.3);
+}
+.cf-excel-badge {
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 2px 10px; border-radius: 20px;
+  font-size: 11px; font-weight: 600;
+}
+
+/* ================================================================
+   RESPONSIVE
+================================================================ */
+@media (max-width: 768px) {
+  .cf-header    { padding: 0 16px; }
+  .cf-content   { padding: 16px; }
+  .cf-subheader { padding: 14px 16px; }
+  .cf-filter-row  { flex-direction: column; align-items: flex-start; }
+  .cf-date-group  { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .cf-stats-row   { flex-wrap: wrap; }
+}

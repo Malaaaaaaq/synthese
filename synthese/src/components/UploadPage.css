@@ -1,0 +1,261 @@
+/* ================================================================
+   UploadPage.css — Fond Bleu Marine cohérent avec l'application
+   Police : Poppins
+================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── PAGE ─────────────────────────────────────────────────── */
+.upload-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0a1628 0%, #0f2847 40%, #1a3a6e 100%);
+  position: relative;
+  padding: 40px 20px;
+  overflow: hidden;
+}
+
+/* ── EFFETS DÉCORATIFS DE FOND ────────────────────────────── */
+.upload-container::before {
+  content: "";
+  position: fixed;
+  top: -150px; left: -150px;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,86,219,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.upload-container::after {
+  content: "";
+  position: fixed;
+  bottom: -150px; right: -100px;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(77,184,255,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── BANNIÈRE NAVIRE ──────────────────────────────────────── */
+.navire-info-banner {
+  background: rgba(26,86,219,0.2);
+  border: 1px solid rgba(77,184,255,0.3);
+  color: #7eb8f7;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  backdrop-filter: blur(8px);
+}
+
+/* ── CARTE PRINCIPALE ─────────────────────────────────────── */
+.upload-card {
+  position: relative;
+  z-index: 1;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 22px;
+  padding: 48px 40px;
+  max-width: 560px;
+  width: 100%;
+  box-shadow:
+    0 24px 60px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.1);
+  animation: fadeUp 0.5s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── TITRE ────────────────────────────────────────────────── */
+.upload-card h1 {
+  color: white;
+  margin-bottom: 10px;
+  font-size: 26px;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.subtitle {
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 28px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* ── ZONE D'UPLOAD ────────────────────────────────────────── */
+.upload-area { margin: 8px 0 20px; }
+
+.file-input { display: none; }
+
+.file-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 190px;
+  padding: 36px 20px;
+  border: 2px dashed rgba(77,184,255,0.35);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgba(255,255,255,0.03);
+  position: relative;
+  overflow: hidden;
+}
+
+.file-label::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(26,86,219,0.15), rgba(77,184,255,0.1));
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 14px;
+}
+
+.file-label:hover {
+  border-color: rgba(77,184,255,0.7);
+  border-style: solid;
+  transform: scale(1.01);
+  box-shadow: 0 8px 24px rgba(77,184,255,0.15);
+}
+
+.file-label:hover::before { opacity: 1; }
+
+/* Icône upload */
+.upload-icon {
+  font-size: 52px;
+  margin-bottom: 14px;
+  color: #4db8ff;
+  z-index: 1;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.file-label:hover .upload-icon {
+  transform: translateY(-8px) scale(1.1);
+  color: #7dd8ff;
+}
+
+/* Texte fichier sélectionné */
+.upload-text {
+  color: rgba(255,255,255,0.7);
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  word-break: break-word;
+  z-index: 1;
+  background: rgba(255,255,255,0.08);
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* ── MESSAGE D'ERREUR ─────────────────────────────────────── */
+.error-message {
+  color: #fca5a5;
+  background: rgba(239,68,68,0.12);
+  border: 1px solid rgba(239,68,68,0.3);
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-top: 16px;
+  font-size: 13px;
+  text-align: center;
+  font-weight: 500;
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+/* ── BOUTON UPLOAD ────────────────────────────────────────── */
+.upload-button {
+  background: linear-gradient(135deg, #1a56db 0%, #2a4f8f 100%);
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 8px;
+  box-shadow: 0 8px 20px rgba(26,86,219,0.35);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.3px;
+}
+
+/* Effet brillance */
+.upload-button::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%; height: 100%;
+  background: linear-gradient(to right,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.2) 50%,
+    rgba(255,255,255,0) 100%);
+  transform: skewX(-20deg);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0%   { left: -100%; }
+  20%  { left: 200%; }
+  100% { left: 200%; }
+}
+
+.upload-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #2563eb 0%, #1a56db 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(26,86,219,0.5);
+}
+
+.upload-button:disabled {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.3);
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.upload-button:disabled::after { display: none; }
+
+/* ── RESPONSIVE ───────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .upload-card {
+    padding: 32px 20px;
+    border-radius: 18px;
+  }
+
+  .upload-card h1 { font-size: 22px; }
+
+  .file-label {
+    min-height: 160px;
+    padding: 28px 14px;
+  }
+}

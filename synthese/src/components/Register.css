@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── PAGE ────────────────────────────────────────────── */
+.register-page {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── LOGO E-FACTURE ────────────────────────────────────── */
+.efacture-logo {
+  position: absolute;
+  top: 35px;
+  left: 50px;
+  height: auto;
+  max-height: 110px;
+  z-index: 20;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+  will-change: transform, filter;
+  cursor: pointer;
+}
+
+.efacture-logo:hover {
+  transform: scale(1.05) translateY(-2px);
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,0.25));
+}
+
+/* ── PANNEAU GAUCHE bleu ─────────────────────────────── */
+.register-left {
+  flex: 1;
+  background: linear-gradient(135deg, #1a56db 0%, #2563eb 60%, #3b82f6 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.lottie-wrap {
+  width: 100%;
+  max-width: 420px;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.2));
+}
+
+/* ── SÉPARATEUR DIAGONAL ─────────────────────────────── */
+.diagonal-divider {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-120px);
+  width: 260px;
+  height: 100%;
+  background: linear-gradient(160deg, #1a56db 0%, #4338ca 50%, #6366f1 100%);
+  clip-path: polygon(40% 0%, 100% 0%, 60% 100%, 0% 100%);
+  z-index: 2;
+}
+
+/* ── PANNEAU DROIT gris clair ────────────────────────── */
+.register-right {
+  flex: 0 0 52%;
+  background: #f0f2f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  position: relative;
+  z-index: 3;
+}
+
+/* cercles décoratifs */
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(200, 210, 240, 0.45);
+  pointer-events: none;
+}
+.circle-top    { width: 100px; height: 100px; top: 60px;  right: 60px; }
+.circle-bottom { width: 60px;  height: 60px;  bottom: 100px; right: 200px; }
+
+/* ── CARTE ───────────────────────────────────────────── */
+.register-card {
+  width: 100%;
+  max-width: 440px; /* Un peu plus large pour Register car plus de champs */
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px 36px;
+  box-shadow: 0 8px 32px rgba(30, 60, 140, 0.10);
+  animation: fadeUp 0.45s ease both;
+  z-index: 10;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Custom Scrollbar for card if needed */
+.register-card::-webkit-scrollbar {
+  width: 6px;
+}
+.register-card::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── TITRE ───────────────────────────────────────────── */
+.title {
+  font-family: 'Sora', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a56db;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #64748b;
+  font-size: 13.5px;
+  margin-bottom: 24px;
+}
+
+/* ── ALERTS ──────────────────────────────────────────── */
+.error-alert {
+  background-color: #ffdddd;
+  color: #d32f2f;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  font-size: 13px;
+  border-left: 4px solid #d32f2f;
+}
+
+/* ── FORMULAIRE ──────────────────────────────────────── */
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.register-form label {
+  margin-top: 10px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 13px;
+  color: #374151;
+}
+
+.register-form input,
+.register-form select {
+  padding: 11px 14px;
+  border-radius: 8px;
+  border: 1.5px solid #e2e8f0;
+  background: #f8fafc;
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  color: #0f172a;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+  appearance: none;
+}
+.register-form input:focus,
+.register-form select:focus {
+  border-color: #1a56db;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.1);
+}
+.register-form input::placeholder { color: #94a3b8; }
+
+/* Password wrap */
+.pass-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.pass-wrap input { padding-right: 44px; }
+.toggle-pass {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0;
+  line-height: 1;
+  color: #94a3b8;
+}
+
+/* ── BOUTON SIGN IN ──────────────────────────────────── */
+.btn-register {
+  margin-top: 22px;
+  padding: 13px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #1a56db, #6366f1);
+  color: #fff;
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+  box-shadow: 0 4px 14px rgba(26, 86, 219, 0.35);
+}
+.btn-register:hover:not(:disabled) {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(26, 86, 219, 0.45);
+}
+.btn-register:disabled { opacity: 0.65; cursor: not-allowed; }
+
+.btn-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.spinner {
+  width: 15px; height: 15px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── LOGIN TEXT ────────────────────────────────────────── */
+.login-text {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 13px;
+  color: #64748b;
+}
+.link-register {
+  color: #1a56db;
+  font-weight: 700;
+  text-decoration: none;
+  margin-left: 4px;
+}
+.link-register:hover { text-decoration: underline; }
+
+/* ── RESPONSIVE ──────────────────────────────────────── */
+@media (max-width: 900px) {
+  .register-left, .diagonal-divider { display: none; }
+  .register-right { flex: 1; padding: 15px; background: #fff; }
+  
+  .efacture-logo {
+    position: relative;
+    top: 0; left: 0;
+    margin: 0 auto 20px;
+    display: block;
+    max-height: 70px;
+  }
+
+  .register-card {
+    box-shadow: none;
+    padding: 10px;
+    max-width: 100%;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .title { font-size: 20px; }
+  .subtitle { font-size: 11px; margin-bottom: 15px; }
+  .btn-register { padding: 11px; font-size: 13px; margin-top: 15px; }
+}

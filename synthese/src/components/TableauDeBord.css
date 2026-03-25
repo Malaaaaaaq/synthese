@@ -1,0 +1,410 @@
+/* ================================================================
+   TableauDeBord.css — Maritime Dashboard + Canvas Animation
+   Police : Poppins
+================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── CONTAINER — fond sombre maritime ───────────────────── */
+.tdb-container {
+  font-family: 'Poppins', sans-serif;
+  background: #060f1e;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ── CANVAS ANIMATION ────────────────────────────────────── */
+.tdb-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Tout le contenu au-dessus du canvas */
+.tdb-header,
+.tdb-page-title,
+.tdb-loading,
+.tdb-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── TOP BAR ─────────────────────────────────────────────── */
+.tdb-header {
+  background: rgba(10, 22, 40, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(77,184,255,0.15);
+  padding: 0 40px;
+  height: 68px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+}
+
+.tdb-header-left {
+  display: flex; align-items: center; gap: 14px;
+}
+
+.tdb-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: linear-gradient(135deg, rgba(26,86,219,0.5), rgba(77,184,255,0.4));
+  border: 2px solid rgba(77,184,255,0.4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 700; color: white;
+  position: relative;
+  box-shadow: 0 0 16px rgba(77,184,255,0.25);
+}
+
+.tdb-avatar::after {
+  content: '';
+  position: absolute; bottom: 1px; right: 1px;
+  width: 11px; height: 11px;
+  background: #10b981; border-radius: 50%;
+  border: 2px solid #060f1e;
+  box-shadow: 0 0 8px rgba(16,185,129,0.6);
+}
+
+.tdb-agent-name { font-size: 14px; font-weight: 700; color: white; }
+.tdb-agent-role { font-size: 11px; color: rgba(255,255,255,0.45); }
+
+.tdb-header-right {
+  display: flex; align-items: center; gap: 14px;
+}
+
+.tdb-btn-back {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.7);
+  padding: 8px 16px; border-radius: 8px;
+  font-size: 12px; font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer; transition: all 0.2s;
+  display: flex; align-items: center; gap: 6px;
+}
+
+.tdb-btn-back:hover {
+  background: rgba(255,255,255,0.12);
+  color: white;
+}
+
+.tdb-btn-refresh {
+  background: rgba(77,184,255,0.12);
+  border: 1px solid rgba(77,184,255,0.3);
+  color: #7eb8f7;
+  padding: 8px 16px; border-radius: 8px;
+  font-size: 12px; font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer; transition: all 0.2s;
+  display: flex; align-items: center; gap: 6px;
+}
+
+.tdb-btn-refresh:hover {
+  background: rgba(77,184,255,0.22);
+  color: white;
+}
+
+.tdb-logo { display: flex; align-items: center; gap: 10px; }
+
+.tdb-logo-icon {
+  width: 38px; height: 38px;
+  background: white; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 800; color: #152c54;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.tdb-logo-text { font-size: 16px; font-weight: 700; color: white; line-height: 1; }
+.tdb-logo-sub  { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+
+/* ── TITRE PAGE ──────────────────────────────────────────── */
+.tdb-page-title {
+  display: flex; align-items: center; gap: 20px;
+  padding: 32px 40px 10px;
+}
+
+.tdb-title-icon {
+  width: 56px; height: 56px;
+  background: linear-gradient(135deg, rgba(26,86,219,0.3), rgba(77,184,255,0.2));
+  border: 1px solid rgba(77,184,255,0.3);
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; color: #4db8ff;
+  box-shadow: 0 0 20px rgba(77,184,255,0.2);
+  backdrop-filter: blur(8px);
+  flex-shrink: 0;
+}
+
+.tdb-page-title h1 {
+  font-size: 22px; font-weight: 800; color: white;
+  letter-spacing: -0.5px;
+}
+
+.tdb-page-title p {
+  font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 3px;
+}
+
+/* ── LOADING ─────────────────────────────────────────────── */
+.tdb-loading {
+  display: flex; align-items: center; justify-content: center;
+  gap: 14px; padding: 120px;
+  color: rgba(255,255,255,0.5); font-size: 15px;
+}
+
+.tdb-spinner {
+  display: inline-block; width: 24px; height: 24px;
+  border: 3px solid rgba(77,184,255,0.2);
+  border-top-color: #4db8ff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── CONTENU ─────────────────────────────────────────────── */
+.tdb-content { padding: 20px 40px 40px; flex: 1; }
+
+/* ── STATS GRID — glassmorphism ──────────────────────────── */
+.tdb-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.tdb-stat-card {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-top: 2px solid var(--c);
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: flex; align-items: center; gap: 14px;
+  transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  animation: fadeUp 0.6s ease both;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+}
+
+.tdb-stat-wide { grid-column: span 2; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.tdb-stat-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.14);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3), 0 0 20px var(--c, rgba(77,184,255,0.1));
+  background: rgba(255,255,255,0.07);
+}
+
+.tdb-stat-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: var(--bg);
+  color: var(--c);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+  box-shadow: 0 0 16px var(--c, rgba(77,184,255,0.2));
+}
+
+.tdb-stat-val {
+  font-size: 24px; font-weight: 800; color: white;
+  line-height: 1; letter-spacing: -0.5px;
+}
+
+.tdb-stat-label {
+  font-size: 11px; color: rgba(255,255,255,0.45);
+  font-weight: 500; margin-top: 4px;
+}
+
+/* ── MAIN GRID ───────────────────────────────────────────── */
+.tdb-main-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* ── CARD — glassmorphism ────────────────────────────────── */
+.tdb-card {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+  animation: fadeUp 0.5s ease both;
+}
+
+.tdb-card-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.tdb-card-header h3 {
+  font-size: 13px; font-weight: 700; color: white;
+  display: flex; align-items: center; gap: 8px;
+}
+
+.tdb-card-header h3 svg { color: #4db8ff; }
+
+.tdb-card-badge {
+  font-size: 11px; font-weight: 600;
+  background: rgba(77,184,255,0.12);
+  color: #7eb8f7;
+  border: 1px solid rgba(77,184,255,0.2);
+  padding: 3px 10px; border-radius: 20px;
+}
+
+.tdb-empty {
+  padding: 50px; text-align: center;
+  color: rgba(255,255,255,0.25); font-size: 14px;
+}
+
+/* ── GRAPHIQUE BARRES ────────────────────────────────────── */
+.tdb-chart {
+  padding: 18px 20px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+
+.tdb-bar-row { display: flex; align-items: center; gap: 10px; }
+
+.tdb-bar-label {
+  width: 100px; font-size: 12px; font-weight: 600;
+  color: rgba(255,255,255,0.6); text-align: right;
+  flex-shrink: 0; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis;
+}
+
+.tdb-bar-track {
+  flex: 1; height: 9px;
+  background: rgba(255,255,255,0.06); border-radius: 6px; overflow: hidden;
+}
+
+.tdb-bar-fill {
+  height: 100%; border-radius: 6px;
+  animation: barGrow 1s cubic-bezier(0.34,1.56,0.64,1) both;
+  box-shadow: 0 0 8px currentColor;
+}
+
+@keyframes barGrow { from { width: 0 !important; } }
+
+.tdb-bar-info {
+  display: flex; flex-direction: column; align-items: flex-end; min-width: 120px;
+}
+
+.tdb-bar-count { font-size: 10px; color: rgba(255,255,255,0.4); }
+.tdb-bar-total { font-size: 11px; font-weight: 700; color: #7eb8f7; font-family: monospace; }
+
+/* ── DERNIÈRES FACTURES ──────────────────────────────────── */
+.tdb-factures-list { padding: 8px 0; }
+
+.tdb-facture-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  transition: background 0.15s;
+  animation: fadeUp 0.4s ease both;
+}
+
+.tdb-facture-row:last-child { border-bottom: none; }
+.tdb-facture-row:hover { background: rgba(255,255,255,0.04); }
+
+.tdb-facture-num {
+  font-size: 11px; font-weight: 700; color: #7eb8f7;
+  font-family: monospace; margin-bottom: 4px;
+}
+
+.tdb-facture-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+.tdb-facture-meta span { font-size: 10px; color: rgba(255,255,255,0.35); }
+
+.tdb-facture-right { text-align: right; }
+
+.tdb-facture-ttc {
+  font-size: 13px; font-weight: 800; color: white;
+  font-family: monospace; margin-bottom: 4px;
+}
+
+.tdb-facture-badge {
+  font-size: 10px; font-weight: 600;
+  background: rgba(16,185,129,0.15);
+  color: #34d399;
+  border: 1px solid rgba(16,185,129,0.3);
+  padding: 2px 8px; border-radius: 20px;
+}
+
+/* ── RÉPARTITION ─────────────────────────────────────────── */
+.tdb-repartition-card { margin-top: 0; }
+
+.tdb-repartition {
+  padding: 22px 24px;
+  display: flex; align-items: center; gap: 36px; flex-wrap: wrap;
+}
+
+.tdb-rep-item {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  min-width: 90px;
+}
+
+.tdb-rep-circle {
+  width: 76px; height: 76px; border-radius: 50%;
+  background: conic-gradient(var(--color) 0% var(--pct), rgba(255,255,255,0.06) var(--pct) 100%);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  box-shadow: 0 0 20px var(--color, rgba(77,184,255,0.2));
+}
+
+.tdb-rep-circle::before {
+  content: '';
+  position: absolute; inset: 12px;
+  background: #0d1a2e; border-radius: 50%;
+}
+
+.tdb-rep-circle span {
+  position: relative; z-index: 1;
+  font-size: 13px; font-weight: 800; color: white;
+}
+
+.tdb-rep-label { font-size: 11px; color: rgba(255,255,255,0.4); font-weight: 500; }
+.tdb-rep-val   { font-size: 20px; font-weight: 800; }
+
+.tdb-rep-bar-wrap { flex: 1; min-width: 260px; }
+
+.tdb-rep-bar-label {
+  display: flex; justify-content: space-between;
+  font-size: 11px; font-weight: 600;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 10px; gap: 16px;
+}
+
+.tdb-rep-bar {
+  height: 14px; border-radius: 7px;
+  background: rgba(255,255,255,0.06); overflow: hidden; display: flex;
+}
+
+.tdb-rep-bar-green  { background: linear-gradient(90deg,#10b981,#34d399); transition: width 1.2s ease; }
+.tdb-rep-bar-orange { background: linear-gradient(90deg,#f59e0b,#fbbf24); transition: width 1.2s ease; }
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .tdb-stats-grid { grid-template-columns: repeat(2,1fr); }
+  .tdb-stat-wide  { grid-column: span 1; }
+  .tdb-main-grid  { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .tdb-header  { padding: 0 16px; }
+  .tdb-content { padding: 12px 16px 30px; }
+  .tdb-page-title { padding: 20px 16px 8px; }
+  .tdb-stats-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+}

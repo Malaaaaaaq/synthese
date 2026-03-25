@@ -1,0 +1,345 @@
+/* ================================================================
+   FacturationModal.css — Modal Facture ANP
+================================================================ */
+
+/* ── OVERLAY ─────────────────────────────────────────────── */
+.fm-overlay {
+  position: fixed !important;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7) !important;
+  backdrop-filter: blur(6px);
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999 !important;
+  padding: 20px;
+  animation: fm-fade 0.25s ease;
+}
+
+@keyframes fm-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── MODAL ───────────────────────────────────────────────── */
+.fm-modal {
+  background: white !important;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 820px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35) !important;
+  animation: fm-slide 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  z-index: 100000 !important;
+}
+
+@keyframes fm-slide {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── HEADER ──────────────────────────────────────────────── */
+.fm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 30px 20px;
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  border-radius: 16px 16px 0 0;
+  color: white;
+}
+
+.fm-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.fm-logo {
+  height: 44px;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+.fm-title {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: 3px;
+  color: white;
+}
+
+.fm-numero {
+  font-size: 13px;
+  color: #94a3b8;
+  font-family: monospace;
+  letter-spacing: 1px;
+}
+
+.fm-close {
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: white;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.fm-close:hover { background: rgba(239,68,68,0.4); }
+
+/* ── INFOS NAVIRE ────────────────────────────────────────── */
+.fm-infos {
+  display: flex;
+  flex-wrap: wrap;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.fm-info-block {
+  flex: 1;
+  min-width: 130px;
+  padding: 14px 20px;
+  border-right: 1px solid #e2e8f0;
+  display: flex; flex-direction: column; gap: 4px;
+}
+
+.fm-info-block:last-child { border-right: none; }
+
+.fm-info-label {
+  font-size: 10px; font-weight: 700; color: #94a3b8;
+  letter-spacing: 1.5px; text-transform: uppercase;
+}
+
+.fm-info-val {
+  font-size: 14px; font-weight: 600; color: #1e293b;
+}
+
+/* ── TABLEAU MARCHANDISES ────────────────────────────────── */
+.fm-table-wrap {
+  padding: 24px 30px 0;
+  overflow-x: auto;
+}
+
+.fm-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.fm-table thead {
+  background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+  color: white;
+}
+
+.fm-table th {
+  padding: 13px 16px;
+  text-align: left;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.5px; text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.fm-table th:nth-child(4),
+.fm-table th:nth-child(5),
+.fm-table th:nth-child(6) { text-align: right; }
+
+.fm-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #475569; vertical-align: middle;
+}
+
+.fm-table tbody tr:last-child td { border-bottom: none; }
+.fm-table tbody tr:hover { background: #f8fafc; }
+
+.fm-libelle { font-weight: 600; color: #1e293b; }
+.fm-num     { text-align: right; font-family: monospace; }
+.fm-ht      { color: #1e40af; font-weight: 700; text-align: right; }
+
+/* ── RÉCAPITULATIF ───────────────────────────────────────── */
+.fm-recap {
+  padding: 24px 30px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.fm-recap-table {
+  width: 360px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.fm-recap-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 11px 18px; border-bottom: 1px solid #f1f5f9;
+  font-size: 14px; color: #475569;
+}
+
+.fm-recap-row small { color: #94a3b8; font-size: 11px; }
+
+.fm-recap-row span:last-child {
+  font-family: monospace; font-weight: 600; color: #1e293b;
+}
+
+.fm-recap-subtotal {
+  background: #f8fafc; font-weight: 600;
+  border-top: 2px solid #e2e8f0;
+}
+
+.fm-recap-subtotal span { color: #1e293b !important; }
+
+.fm-recap-total {
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  color: white !important;
+  font-size: 16px !important; font-weight: 800 !important;
+  border-bottom: none; padding: 15px 18px;
+}
+
+.fm-recap-total span { color: white !important; font-size: 16px; }
+
+/* ── ACTIONS ─────────────────────────────────────────────── */
+.fm-actions {
+  display: flex; justify-content: flex-end;
+  gap: 12px; padding: 0 30px 28px; flex-wrap: wrap;
+}
+
+.fm-btn-print {
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 22px; border-radius: 8px;
+  border: 1.5px solid #cbd5e1; background: white;
+  color: #475569; font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: all 0.2s;
+}
+
+.fm-btn-print:hover {
+  border-color: #3b82f6; color: #3b82f6; background: #eff6ff;
+}
+
+.fm-btn-valider {
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 28px; border-radius: 8px; border: none;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white; font-size: 14px; font-weight: 700;
+  cursor: pointer; transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(16,185,129,0.3);
+}
+
+.fm-btn-valider:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(16,185,129,0.4);
+}
+
+.fm-btn-valider:disabled { opacity: 0.7; cursor: not-allowed; }
+
+/* ── SUCCÈS ──────────────────────────────────────────────── */
+.fm-success {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; padding: 20px 30px 28px;
+  color: #059669; font-size: 16px; font-weight: 700;
+}
+
+/* ── SPINNER ─────────────────────────────────────────────── */
+.fm-spinner {
+  display: inline-block;
+  width: 16px; height: 16px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: fm-spin 0.6s linear infinite;
+}
+
+@keyframes fm-spin { to { transform: rotate(360deg); } }
+
+/* ── IMPRESSION ──────────────────────────────────────────── */
+@media print {
+  @page {
+    margin: 1cm;
+    size: A4;
+  }
+
+  /* Cacher absolument tout sur la page */
+  body * {
+    visibility: hidden !important;
+  }
+
+  /* Rendre visible uniquement la modal et son contenu */
+  .fm-modal,
+  .fm-modal * {
+    visibility: visible !important;
+  }
+
+  /* Positionner la modal en haut de la page d'impression */
+  .fm-modal {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    z-index: 99999 !important;
+  }
+
+  /* Cacher les boutons d'action à l'impression */
+  .no-print {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* Forcer les couleurs pour l'impression */
+  .fm-header {
+    background: #1e293b !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  .fm-table thead {
+    background: #1e3a8a !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  .fm-recap-total {
+    background: #1e3a8a !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* Eviter les coupures dans le tableau */
+  .fm-table tr {
+    page-break-inside: avoid;
+  }
+
+  .fm-recap {
+    page-break-inside: avoid;
+  }
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .fm-modal { border-radius: 12px; }
+  .fm-header { padding: 18px 20px; }
+  .fm-infos { flex-direction: column; }
+  .fm-info-block { border-right: none; border-bottom: 1px solid #e2e8f0; }
+  .fm-table-wrap { padding: 16px; }
+  .fm-recap { padding: 16px; justify-content: stretch; }
+  .fm-recap-table { width: 100%; }
+  .fm-actions { padding: 0 16px 20px; flex-direction: column; }
+  .fm-btn-print, .fm-btn-valider { width: 100%; justify-content: center; }
+}
