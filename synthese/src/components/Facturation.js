@@ -151,7 +151,7 @@ function Facturation() {
   const fetchManifestes = async () => {
     setLoading(true); setError("");
     try {
-      const res = await fetch("/api/manifeste/all", {
+      const res = await fetch("http://localhost:5000/api/manifeste/all", {
         headers: { Authorization: `Bearer ${getToken()}` },
       });
       if (!res.ok) throw new Error();
@@ -162,7 +162,7 @@ function Facturation() {
 
   const fetchTarifs = async () => {
     try {
-      const res = await fetch("/api/tarifs");
+      const res = await fetch("http://localhost:5000/api/tarifs");
       if (!res.ok) throw new Error();
       setTarifs(await res.json());
     } catch { setTarifs([]); }
