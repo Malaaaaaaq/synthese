@@ -1,34 +1,18 @@
 {
   "version": 2,
+  "buildCommand": "cd synthese && npm install && npm run build",
+  "outputDirectory": "synthese/build",
   "env": {
     "CI": "false"
   },
-  "builds": [
+  "rewrites": [
     {
-      "src": "backend/server.js",
-      "use": "@vercel/node"
+      "source": "/api/:path*",
+      "destination": "https://backend-synthese.onrender.com/api/:path*"
     },
     {
-      "src": "synthese/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "build"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "backend/server.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/synthese/$1",
-      "check": true
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/synthese/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
