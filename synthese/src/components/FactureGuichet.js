@@ -365,20 +365,20 @@ function FactureGuichet() {
           {/* Services */}
           <div className="fg-footer-col">
             <h4 className="fg-footer-col-title">Services</h4>
-            <a href="#" className="fg-footer-link">
+            <span className="fg-footer-link">
               Facturation <span className="fg-new-badge">Nouveau</span>
-            </a>
-            <a href="#" className="fg-footer-link">Suivi des paiements</a>
-            <a href="#" className="fg-footer-link">Rapports analytiques</a>
-            <a href="#" className="fg-footer-link">Tableau de bord</a>
+            </span>
+            <span className="fg-footer-link">Suivi des paiements</span>
+            <span className="fg-footer-link">Rapports analytiques</span>
+            <span className="fg-footer-link">Tableau de bord</span>
           </div>
 
           {/* Légal */}
           <div className="fg-footer-col">
             <h4 className="fg-footer-col-title">Légal</h4>
-            <a href="#" className="fg-footer-link">Politique de confidentialité</a>
-            <a href="#" className="fg-footer-link">Conditions d'utilisation</a>
-            <a href="#" className="fg-footer-link">Mentions légales</a>
+            <span className="fg-footer-link">Politique de confidentialité</span>
+            <span className="fg-footer-link">Conditions d'utilisation</span>
+            <span className="fg-footer-link">Mentions légales</span>
           </div>
         </div>
 

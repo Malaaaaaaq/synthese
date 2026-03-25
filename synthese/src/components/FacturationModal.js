@@ -60,8 +60,8 @@ fetch("/api/tarifs"),
     for (const t of tarifs) {
       if (!t.libelle) continue;
       const tarifLib = t.libelle.toLowerCase();
-      const motsTarif = tarifLib.split(/[\s\/\-]+/).filter(m => m.length > 2);
-      const motsLib = lib.split(/[\s\/\-]+/).filter(m => m.length > 2);
+      const motsTarif = tarifLib.split(/[\s/-]+/).filter(m => m.length > 2);
+      const motsLib = lib.split(/[\s/-]+/).filter(m => m.length > 2);
       const match = motsTarif.some(mot => lib.includes(mot)) || motsLib.some(mot => tarifLib.includes(mot));
       if (match) return t.tarif_par_tonne;
     }
