@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "cd synthese && npm install && npm run build",
+  "buildCommand": "cd synthese && npm install && NODE_OPTIONS=--no-deprecation npm run build",
   "outputDirectory": "synthese/build",
   "env": {
     "CI": "false"
