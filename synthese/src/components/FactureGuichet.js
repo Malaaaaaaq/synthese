@@ -13,7 +13,7 @@ function FactureGuichet() {
       .then(res => res.json())
       .then(data => {
         const mappedPorts = data.map((p, i) => {
-          let photo = `/assets/ports/${p.nom.toLowerCase().replace(/\s/g, "")}.png`;
+          let photo = `/assets/ports/${p.nom.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[\s-]/g, "")}.png`;
           if (p.nom === "Mohammedia") photo = "/assets/ports/port4.jpg";
           if (p.nom === "Essaouira") photo = "/assets/ports/port5.jpg";
           if (p.nom === "Al Hoceima") photo = "/assets/ports/houceima.png";
